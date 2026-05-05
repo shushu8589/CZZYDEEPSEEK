@@ -1,20 +1,20 @@
 <template>
   <div class="login-container">
     <el-card class="login-card">
-      <h2 style="text-align: center; margin-bottom: 20px">CZZY ÏµÍ³µÇÂ¼</h2>
+      <h2 style="text-align: center; margin-bottom: 20px">CZZY ç³»ç»Ÿç™»å½•</h2>
       <el-form :model="form" :rules="rules" ref="formRef" @keyup.enter="handleLogin">
         <el-form-item prop="username">
-          <el-input v-model="form.username" placeholder="ÓÃ»§Ãû" :prefix-icon="UserFilled" />
+          <el-input v-model="form.username" placeholder="ç”¨æˆ·å" :prefix-icon="UserFilled" />
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="form.password" type="password" show-password placeholder="ÃÜÂë" :prefix-icon="Lock" />
+          <el-input v-model="form.password" type="password" show-password placeholder="å¯†ç " :prefix-icon="Lock" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" :loading="loading" @click="handleLogin" style="width: 100%">µÇ Â¼</el-button>
+          <el-button type="primary" :loading="loading" @click="handleLogin" style="width: 100%">ç™» å½•</el-button>
         </el-form-item>
       </el-form>
       <p v-if="errorMsg" style="color: red; text-align: center">{{ errorMsg }}</p>
-      <p style="text-align: center; color: #999; font-size: 12px">²âÊÔÕËºÅ: admin / 123456</p>
+      <p style="text-align: center; color: #999; font-size: 12px">æ¼”ç¤ºè´¦å·: admin / 123456</p>
     </el-card>
   </div>
 </template>
@@ -31,8 +31,8 @@ const loading = ref(false)
 const errorMsg = ref('')
 
 const rules = {
-  username: [{ required: true, message: 'ÇëÊäÈëÓÃ»§Ãû', trigger: 'blur' }],
-  password: [{ required: true, message: 'ÇëÊäÈëÃÜÂë', trigger: 'blur' }]
+  username: [{ required: true, message: 'è¯·è¾“å…¥ç”¨æˆ·å', trigger: 'blur' }],
+  password: [{ required: true, message: 'è¯·è¾“å…¥å¯†ç ', trigger: 'blur' }]
 }
 
 const handleLogin = async () => {
@@ -44,7 +44,7 @@ const handleLogin = async () => {
     localStorage.setItem('user', JSON.stringify(res.data.user))
     router.push('/')
   } catch (err) {
-    errorMsg.value = err.response?.data?.detail || 'µÇÂ¼Ê§°Ü£¬Çë¼ì²éÓÃ»§ÃûºÍÃÜÂë'
+    errorMsg.value = err.response?.data?.detail || 'ç™»å½•å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç”¨æˆ·åæˆ–å¯†ç '
   } finally {
     loading.value = false
   }

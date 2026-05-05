@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>欢迎使用 CZZY 系统</h1>
-    <p>当前用户：{{ user?.display_name }}</p>
+    <h1>娆㈣繋浣跨敤 CZZY 绯荤粺</h1>
+    <p>褰撳墠鐢ㄦ埛锛歿{ user?.display_name }}</p>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ onMounted(async () => {
     const res = await http.get('/api/auth/me')
     user.value = res.data
   } catch (e) {
-    console.error('获取用户信息失败', e)
+    console.error('鑾峰彇鐢ㄦ埛淇℃伅澶辫触', e)
   }
 })
 </script>

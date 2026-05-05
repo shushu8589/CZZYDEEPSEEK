@@ -22,7 +22,10 @@ class Settings(BaseSettings):
     sqlserver_odbc_driver: str = 'ODBC Driver 18 for SQL Server'
 
     access_token_expire_minutes: int = 720
+    algorithm: str = 'HS256'
     backend_cors_origins: list[str] = Field(default_factory=lambda: ['http://localhost:5173'])
+
+
 
 
 @lru_cache

@@ -1,21 +1,12 @@
 <template>
   <div>
     <h1>欢迎使用 CZZY 系统</h1>
-    <p>当前用户：{{ user?.display_name }}</p>
+    <p>当前登录人：{{ user.name || user.username }}</p>
+    <p>当前登录IP：{{ user.currentLoginIp || '-' }}</p>
+    <p>上次登录时间：{{ user.lastLoginTime || '-' }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import http from '@/api/http'
-
-const user = ref(null)
-onMounted(async () => {
-  try {
-    const res = await http.get('/api/auth/me')
-    user.value = res.data
-  } catch (e) {
-    console.error('获取用户信息失败', e)
-  }
-})
+const user = JSON.parse(localStorage.getItem('user') || '{}')
 </script>

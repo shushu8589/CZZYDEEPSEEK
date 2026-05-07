@@ -60,3 +60,7 @@ def check_all_databases() -> dict[str, bool]:
         'mold_db': check_db_connection(engines['mold']),
         'key_db': check_db_connection(engines['key']),
     }
+
+
+def get_key_db() -> Generator[Session, None, None]:
+    yield from get_db('key')
